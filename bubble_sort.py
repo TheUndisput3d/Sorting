@@ -12,9 +12,17 @@ def bubble_sort(arr):
   
     if not is_swapped:
       break
-  
+
+def rec_bubble(arr, n, c):
+  if c == len(arr) -1:
+    return
+  for i in range(1, n):
+    if arr[i] < arr[i-1]:
+      arr[i], arr[i-1] = arr[i-1], arr[i]
+  rec_bubble(arr, n-1, c+1)
+
 
 if __name__ == "__main__":
   print(f"unsorted_array: {arr}")
-  bubble_sort(arr)
+  rec_bubble(arr, 5, 0)
   print(f"sorted_array: {arr}")

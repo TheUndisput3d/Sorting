@@ -4,7 +4,8 @@ def selection_sort(arr):
     last = n-i-1
 
     max_index = get_max_index(last, arr)
-    arr[last], arr[max_index] = arr[max_index], arr[last]
+    if arr[last] != arr[max_index]:
+      arr[last], arr[max_index] = arr[max_index], arr[last]
 
 def get_max_index(last, array):
   max_ = 0
@@ -12,11 +13,21 @@ def get_max_index(last, array):
     if array[i] > array[max_]:
       max_ = i
   return max_
+
+def rec_selection_sort(arr, last_index, n): # simple recursive selection sort
+  if n == 1:
+    return 
+  max_index = get_max_index(last_index, arr)
+  if arr[last_index] != arr[max_index]:
+    arr[last_index], arr[max_index] = arr[max_index], arr[last_index]
+  rec_selection_sort(arr, last_index-1, n-1)
+
   
+
 if __name__ == "__main__":
   arr = [7, 6, 5, 4, 3, 2, 1]
   print("before sorting:",arr)
-  selection_sort(arr)
+  rec_selection_sort(arr, len(arr)-1, len(arr))
   print("after sorting:", arr)
 
 
